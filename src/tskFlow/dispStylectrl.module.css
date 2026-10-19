@@ -1,0 +1,37 @@
+
+.mainBtn{
+    border-radius: 25px;
+    align-self: center;
+    width: max-content;
+    display: flex;
+    justify-content: center;
+}
+
+.mainBtn p{
+    margin: 0px 0px 4px 0px;
+    font-size: larger;
+}
+
+.mainBtn div{
+    background-color: black;
+    color: rgba(0, 0, 0, 0);
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    align-self: center;
+}
+.hoverInfo{
+    display: none;
+}
+
+.mainBtn:hover + .hoverInfo{
+    display: block;
+    z-index: 11;
+    text-shadow: none;
+    background-color: rgba(2, 0, 0, 0.185);
+    padding: 1%;
+    height: fit-content;
+    align-self: flex-end;
+    border-radius:20px;
+    font-size: var(--text-sm);
+}

@@ -1,0 +1,26 @@
+
+body{
+    background-color: rgba(242, 242, 245, 0.575);
+}
+input{
+    background-color: rgba(0, 0, 0, 0);
+}
+.inputmainDiv {
+    padding: var(--space-3);
+    background-color:var(--bg);
+    border-radius: var(--radius);
+    text-decoration: underline;
+    font: 400 1.2em var(--font);
+    margin-bottom: 6%;
+
+
+}
+
+.inputmainDiv input:focus{
+    border-bottom: 3px solid var(--accent);
+}
+
+.inputmainDiv input{
+    border-bottom: 3px solid var(--border);
+    background-color: rgba(0, 0, 0, 0)  !important;
+}

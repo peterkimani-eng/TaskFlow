@@ -1,0 +1,136 @@
+
+
+:root{
+  --bg: #fff;
+  --bg-elev:#161a22;
+  --text:#080000f8;
+  --text-muted:#000000;
+  --accent:rgb(29, 161, 242);
+  --accent-hover:rgb(12, 130, 217);
+  --border:#c2cad4;
+  --border-muted:rgba(0, 0, 0, 0);
+
+  --primary:rgb(12, 135, 217);
+
+  --active:var(--text-sm);
+
+
+  --radius:12px;
+  --radius-sm:8px;
+
+  --shadow-sm:0 2px 4px rgba(0,0,0,0.2);
+  --shadow:0 4px 16px rgba(0,0,0,0.25);
+  --shadow-lg:0 10px 40px rgba(0,0,0,0.4);
+
+  --box-shadow:00 3px 6px var(--primary);
+  --transition:0.25s ease;
+
+
+  --font:Inter,System-ui,-apple-system,sans-serif;
+
+  /*   */
+  --success:rgba(172, 7, 158, 0.753);
+  --warning:#f59e0b;
+  --danger:#fd1a1ac2;
+
+  --text-xs:12px;
+  --text-sm:14px;
+  --text-base:16px;
+  --text-lg:18px;
+  --text-hover:19px;
+  --text-xl:24px;
+  --text-2xl:50px;
+  --text-2xl-max:50px;
+
+
+  --space-1 :4px;
+  --space-2 : 8px;
+  --space-3: 12px;
+  --space-4-min:15px;
+  --space-4: 16px;
+  --space-5 : 24px;
+  --space-6 : 32px;
+
+
+
+
+}
+
+p{
+ color: rgba(240, 233, 233, 0.993);   
+}
+
+.gdMainDiv1{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: masonry;
+  gap: 16px;
+  align-items: start;
+
+  font: var(--font);
+
+}
+
+.gdMainDiv2{
+  flex: 1 1 200px;
+  border: var(--space-1) solid rgba(0, 0, 0, 0.695);
+  border-radius: var(--radius);
+  background-color: var(--accent);
+  padding: var(--space-3);
+  transition: transform var(--transition);
+  transform-origin: center;
+}
+
+.gdMainDiv2:hover{
+ transform: scale(1.02);
+}
+
+
+
+.dateDiv{
+  display: flex;
+
+}
+
+.dateDiv p{
+  color: rgba(3, 0, 0, 0.205);
+  font: 300 var(--text-sm) var(--font);
+  transition: var(--transition);
+}
+
+.gdMainDiv2:hover .dateDiv p{
+  color: blue;
+  font: 500 var(--text-base) var(--font);
+}
+.dateDiv button{
+  
+  background-color: var(--border-muted);
+  border-radius: var(--radius);
+  align-self: flex-start;
+  margin-left: auto;
+}
+
+.statusDiv{
+  display: flex;
+}
+
+.statusDiv p{
+  font: 700 var(--text-lg) var(--font);
+  margin-left: auto;
+  
+}
+.statusDiv p:hover{
+  color: var(--text-muted);
+  transform: scale(1.01);
+  cursor: pointer;
+}
+.done{
+  color: var(--bg);
+}
+.pending{
+  color: var(--text-muted);
+}
+
+.taskDiv{
+  font: 400 var(--text-lg) var(--font);
+}
