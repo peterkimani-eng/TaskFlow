@@ -1,20 +1,21 @@
 
-import { useState,useEffect } from "react";
+import { useState} from "react";
 import { AuthInput } from "./input";
 import styles from './authentication.module.css'
 import { AuthSignIn } from "../apis";
 import { AuthLogIn } from "../apis";
-import TaskFlowScene from "../3drender";
+
 
 export const LoginMainPage=()=>{
     const[form,setForm]=useState({fullName:"",userName:"",password:""});
     const[isLogin,setIsLogin]=useState(true);
     const[error,setError]=useState("")
 
+
     const handleChange = (e) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
     
-}
+ }
 
     const handleSubmit=()=>{
         if(!isLogin){
@@ -22,14 +23,12 @@ export const LoginMainPage=()=>{
                 setError("All fileds must be filled to proceed");
             }else{
                 AuthSignIn(form);
-                console.log(form)
             }
-        }else{if(form.password.trim()===""||form.userName.trim===""){
+         }else{if(form.password.trim()===""||form.userName.trim===""){
             setError("All fields must be filled to proceed");
-        }else{
+         }else{
             AuthLogIn(form);
-            console.log(form);
-        }
+         }
     } 
     }
 

@@ -11,7 +11,7 @@ const statusAPI=`${STATUS}/:${userid}`;
 const orderIdAPI=`${ORDER}/:${userid}`;
 
 const authAPI1=import.meta.env.VITE_SIGNIN_URL;
-const authAPI2=import.meta.env.VITE_SIGNIN_URL;
+const authAPI2=import.meta.env.VITE_LOGIN_URL;
 
  
 
@@ -111,7 +111,7 @@ export const AuthSignIn=async(form)=>{
       }else{
         const userId=await res.json();
         LocallStorageSetId(userId);
-        Middleware();
+        window.dispatchEvent(new Event("updatedLocalstorage"));
       }
 }
 
@@ -129,6 +129,6 @@ export const AuthLogIn=async(form)=>{
       }else{
         const userId=await res.json();
         LocallStorageSetId(userId);
-        Middleware();
+        window.dispatchEvent(new Event("updatedLocalstorage"));
       }
 }
