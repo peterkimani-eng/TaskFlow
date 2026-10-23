@@ -1,5 +1,6 @@
 
-import { useState,useEffect } from "react";
+import { Middleware } from "./middleware/middleware";
+
 let userid= localStorage.getItem("id");
 const API=import.meta.env.VITE_API_URL;
 const STATUS=import.meta.env.VITE_STATUS_URL;
@@ -110,6 +111,7 @@ export const AuthSignIn=async(form)=>{
       }else{
         const userId=await res.json();
         LocallStorageSetId(userId);
+        Middleware();
       }
 }
 
@@ -127,5 +129,6 @@ export const AuthLogIn=async(form)=>{
       }else{
         const userId=await res.json();
         LocallStorageSetId(userId);
+        Middleware();
       }
 }
