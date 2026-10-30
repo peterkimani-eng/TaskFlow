@@ -18,20 +18,25 @@ const authAPI2=import.meta.env.VITE_LOGIN_URL;
 
 
 
-export const GetPost=async()=>{
-    console.log(apii);
-    return fetch(apii,)
-    .then(res=>res.json())
-
-   
-}
+export const GetPost = async () => {
+    try {
+        const res = await fetch(API);
+        
+        if (!res.ok) {
+            throw new Error(`Server error: ${res.status}`);
+        }
+        
+        return await res.json();
+    } catch (err) {
+        console.error("Failed to get post:", err);
+        return null; 
+    }
+};
 
 
 
 
 export const AddPost=async(task)=>{
-
-
         await fetch(apii,{
             method:'POST',
             headers:{'Content-Type':'application/json'},

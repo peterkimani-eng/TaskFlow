@@ -7,12 +7,20 @@ import { GrindStyle } from "../alternativeComponents/Grinddisp";
 import { DispCtrlBtn } from "./dispStyleCtrl";
 import {GetPost, AddPost, DeletePost, UpDate,UpDateStatus,UpDateOrderId,LocallStorageGetValue,LocallStorageSetValue } from "../apis";
 
+
 export const MasterWrapper=()=>{
     const[tasks,SetTasks]=useState([]);
     const[newTask,SetNewTask]=useState("");
     
     const [filters,SetFilters]=useState([false,false,false,false,false]);
-    const[displaytype,SetDisplaytype]=useState(false);
+    const[displaytype,SetDisplaytype]=useState(true);
+    const[error,setError]=useState(false);
+    const[errorr,setErrorr]=useState([{
+                createdAt:new Date(),
+                task:"error has occured",
+                status:false,
+                orderId:1
+              }])
      
     function filtersCtrl(index){
         SetFilters(prev=>prev.map((value,i)=>i===index?!value:value));
@@ -43,7 +51,7 @@ export const MasterWrapper=()=>{
     },[])
     useEffect(() => {
       GetPost().then(data=>{
-        SetTasks(data);
+        data===null?setError(true): SetTasks(data);
       })
     },[])
     
@@ -62,7 +70,7 @@ export const MasterWrapper=()=>{
 
       try{
         await AddPost(tempTask)// fetch updated data
-        .then(()=>GetPost().then(data=>{SetTasks(data)}));
+        .then(()=>GetPost().then(data=>{ data===null?setError(true): SetTasks(data)}));
       }catch(err){
         SetTasks(prev=>prev.filter(t=>t.id !==tempTask._id))
       }
@@ -83,8 +91,7 @@ export const MasterWrapper=()=>{
 
   function upDateOrderId(id,direction) { 
      let iD=Number(id);  //convert id which is a string to a number
-     let id1=0;
-     let id2=0;
+  
     
      const tskIndex=tasks.findIndex(t=>t.orderId===iD);
      const targetindex=direction==="up"?tskIndex-1:tskIndex+1;
@@ -109,17 +116,17 @@ export const MasterWrapper=()=>{
      try {
        UpDateOrderId(ids);
        GetPost().then(data=>{
-        SetTasks(data);
+         data===null?setError(true): SetTasks(data);
       });
      } catch (error) {
        GetPost().then(data=>{
-        SetTasks(data);
+         data===null?setError(true): SetTasks(data);
       });
     window.alert("Failed to swap tasks try again!");
       
      }
      GetPost().then(data=>{
-        SetTasks(data);
+         data===null?setError(true): SetTasks(data);
       });
   }else{
     window.alert("you cant swap the first/last task");
@@ -138,7 +145,16 @@ export const MasterWrapper=()=>{
             alert("Failed to delete try again")
         }
       }
-    
+
+
+useEffect(()=>{
+          if(error){
+          SetTasks(errorr);
+
+
+  }
+  console.log("did run")
+},[error])
     
    
    
@@ -167,7 +183,7 @@ export const MasterWrapper=()=>{
 
         </DisplayOptions>
         
-       {displaytype?<TasksPart 
+       {!displaytype?<TasksPart 
                       tasks={tasks}
                       filters={filters}
                       upDateStatus={upDateStatus}
