@@ -20,7 +20,7 @@ const authAPI2=import.meta.env.VITE_LOGIN_URL;
 
 export const GetPost = async () => {
     try {
-        const res = await fetch(API);
+        const res = await fetch(apii);
         
         if (!res.ok) {
             throw new Error(`Server error: ${res.status}`);
