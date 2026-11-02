@@ -205,6 +205,10 @@ a:hover{
 
   transition: all var(--transition);
 }
+.optionsWraper button:first-child,
+.optionsWraper button:last-child {
+  visibility: hidden;
+}
 
 .normal:hover{
   border: 3px solid var(--primary);

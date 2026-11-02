@@ -26,7 +26,7 @@ export const GrindStyle =(props)=>{
         }                      
                                 
         SetDisplayTasks(visibleTasks);
-        console.log(visibleTasks);
+        //console.log(visibleTasks);
     
     
     }, [props.tasks,props.filters]) 

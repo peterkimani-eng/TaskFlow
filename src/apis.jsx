@@ -1,14 +1,14 @@
 
-import { Middleware } from "./middleware/middleware";
 
 let userid= localStorage.getItem("id");
 const API=import.meta.env.VITE_API_URL;
 const STATUS=import.meta.env.VITE_STATUS_URL;
 const ORDER=import.meta.env.VITE_ORDER_URL;
-const api=API;
-const apii=`${API}/:${userid}`;
-const statusAPI=`${STATUS}/:${userid}`;
-const orderIdAPI=`${ORDER}/:${userid}`;
+
+//const api=API;
+const apii=`${API}/${userid}`;
+const statusAPI=`${STATUS}/${userid}`;
+const orderIdAPI=`${ORDER}/${userid}`;
 
 const authAPI1=import.meta.env.VITE_SIGNIN_URL;
 const authAPI2=import.meta.env.VITE_LOGIN_URL;
@@ -20,14 +20,14 @@ const authAPI2=import.meta.env.VITE_LOGIN_URL;
 
 export const GetPost = async () => {
     try {
-        const res = await fetch(apii);
+        const res = await fetch(API);
         
         if (!res.ok) {
-            throw new Error(`Server error: ${res.status}`);
+            throw new Error(`Server error:`,res.json());
         }
-        
         return await res.json();
-    } catch (err) {
+        
+    }  catch (err) {
         console.error("Failed to get post:", err);
         return null; 
     }
@@ -112,7 +112,7 @@ export const AuthSignIn=async(form)=>{
       })
 
       if (!res.ok){
-        console.log('error')
+        console.log('error',res.json())
       }else{
         const userId=await res.json();
         LocallStorageSetId(userId);
@@ -130,7 +130,7 @@ export const AuthLogIn=async(form)=>{
       })
 
       if (!res.ok){
-        console.log('error')
+        console.log('error',res.json())
       }else{
         const userId=await res.json();
         LocallStorageSetId(userId);

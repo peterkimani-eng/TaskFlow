@@ -20,7 +20,7 @@ export const MasterWrapper=()=>{
                 task:"error has occured",
                 status:false,
                 orderId:1
-              }])
+              }]) //in case of an error 
      
     function filtersCtrl(index){
         SetFilters(prev=>prev.map((value,i)=>i===index?!value:value));
@@ -153,7 +153,7 @@ useEffect(()=>{
 
 
   }
-  console.log("did run")
+  //console.log("did run")
 },[error])
     
    
